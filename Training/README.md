@@ -1,33 +1,31 @@
-# BBO_Training.ipynb Overview
+# BBO_Training.ipynb - Overview
 
-## Purpose
-
-`BBO_Training.ipynb` is a comprehensive Jupyter Notebook that demonstrates the full pipeline for building, training, and evaluating a chatbot AI model specialized in the Cardano blockchain. The notebook is designed for use in Google Colab and leverages both open-source and proprietary tools to automate data processing, model training, and evaluation.
+This notebook demonstrates the complete pipeline for building, training, and evaluating a Cardano-focused chatbot AI model. It covers every step from data collection and preprocessing to model fine-tuning, evaluation, and deployment.
 
 ---
 
-## Main Features
+## Key Features
 
-### 1. Library Installation & Environment Setup
-- Installs all required Python libraries for data processing, web scraping, NLP, and deep learning (e.g., `transformers`, `torch`, `sentence-transformers`, `bitsandbytes`, `peft`, `llama-cpp-python`, etc.).
-- Includes setup for Google Colab and Google Drive integration for data storage and model checkpoints.
+### 1. Environment & Library Setup
+- Installs all required Python libraries for NLP, deep learning, data processing, and web scraping.
+- Supports Google Colab and Google Drive integration for easy data and model management.
 
 ### 2. Data Collection & Preprocessing
-- Supports importing data from multiple sources: Google Drive, Google Sheets, `.docx`, `.xlsx`, `.txt`, and web scraping.
-- Provides utilities for extracting and cleaning text from documents and web pages.
-- Includes translation and sentence segmentation for multilingual data.
-- Merges and normalizes text data for downstream processing.
+- Loads and processes data from various sources: Google Drive, Google Sheets, `.docx`, `.xlsx`, `.txt`, and web scraping.
+- Cleans, deduplicates, and merges text data.
+- Includes translation and sentence segmentation for multilingual sources.
+- Merges short sentences to ensure context-rich training samples.
 
-### 3. Synthetic Data Generation (QA Pairs)
-- Automatically generates question-answer pairs from context paragraphs using pre-trained models (e.g., T5 for question generation, Roberta for answer extraction).
-- Paraphrases answers for diversity using models like BART.
-- Supports batch processing and customization of data generation parameters.
+### 3. Synthetic QA Data Generation
+- Automatically generates question-answer pairs from context using pre-trained models (T5 for question generation, Roberta for answer extraction).
+- Paraphrases answers for diversity using BART.
+- Batch processing for large-scale data creation.
 
 ### 4. Model Training Pipeline
 - Fine-tunes large language models (LLaMA, BART, T5, Roberta, etc.) using LoRA/QLoRA for efficient training on consumer GPUs.
 - Implements custom dataset classes and prompt formatting compatible with LLaMA-3 Instruct and ChatML-style prompts.
 - Supports multi-GPU training, gradient checkpointing, and advanced training arguments.
-- Integrates with HuggingFace Hub for model management and Weights & Biases for experiment tracking.
+- Integrates with HuggingFace Hub and Weights & Biases for model and experiment management.
 
 ### 5. Retrieval-Augmented Generation (RAG)
 - Builds a vector store of context embeddings using `sentence-transformers`.
@@ -35,9 +33,9 @@
 - Supports updating and saving RAG dictionaries for efficient retrieval.
 
 ### 6. Evaluation & Metrics
-- Calculates key evaluation metrics: Perplexity, Factual Accuracy, Hallucination Rate, and Relevance Score.
+- Calculates Perplexity, Factual Accuracy, Hallucination Rate, and Relevance Score.
 - Uses both embedding-based and Wikipedia-based methods for factuality and hallucination detection.
-- Logs results to Excel reports for tracking model performance over time.
+- Logs results to Excel reports for tracking model performance.
 
 ### 7. Model Saving & Export
 - Saves trained models and tokenizers to Google Drive.
@@ -51,19 +49,10 @@
 
 ---
 
-## Usage Notes
-
-- **Hardware:** Designed for GPU environments (Google Colab recommended). Some steps require significant RAM and VRAM.
-- **Customization:** You can adapt the notebook for other domains by changing the data sources and prompt templates.
-- **Dependencies:** All dependencies are installed at the top of the notebook. Ensure you have access to Google Drive and HuggingFace Hub for full functionality.
-- **Data Privacy:** Be cautious with sensitive data, especially when using third-party APIs or cloud storage.
-
----
-
-## Typical Workflow
+## Example Workflow
 
 1. **Install dependencies** and set up the environment.
-2. **Collect and preprocess data** from various sources.
+2. **Collect and preprocess data** from multiple sources.
 3. **Generate synthetic QA pairs** for training.
 4. **Fine-tune the language model** with LoRA/QLoRA.
 5. **Build and update RAG context embeddings**.
@@ -72,12 +61,12 @@
 
 ---
 
-## Example Applications
+## Usage Notes
 
-- Building a domain-specific chatbot for Cardano or other blockchain projects.
-- Automating the creation of QA datasets from unstructured documents.
-- Research on retrieval-augmented generation and factuality in LLMs.
-- Educational purposes for understanding the end-to-end NLP model training pipeline.
+- **Hardware:** Designed for GPU environments (Google Colab recommended). Some steps require significant RAM and VRAM.
+- **Customization:** Adaptable for other domains by changing data sources and prompt templates.
+- **Dependencies:** All dependencies are installed at the top of the notebook. Google Drive and HuggingFace Hub access are required for full functionality.
+- **Data Privacy:** Be cautious with sensitive data, especially when using third-party APIs or cloud storage.
 
 ---
 
